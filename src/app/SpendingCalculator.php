@@ -9,7 +9,7 @@ class SpendingCalculator
 
     public function __construct()
     {
-        $this->pdo = new PDO("mysql:host=mysql; dbname=tq_quest; charset=utf8", "root", "password");
+        $this->pdo = new PDO("mysql:host=mysql; dbname=tq_quest; charset=utf8","root", "password" );
     }
 
     public function calculateTotalSpendingAmount()
