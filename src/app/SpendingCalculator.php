@@ -43,4 +43,23 @@ class SpendingCalculator
 
         return $spendings;
     }
+
+    public function sortSpendings()
+    {
+        $spendings = $this->fetchSpendings();
+        $amounts = array_column($spendings, 'amount');
+        array_multisort($amounts, SORT_ASC, $spendings);
+        $sortedAmounts = array_column($spendings, 'amount');
+    
+        return $sortedAmounts;
+    }
+
+
+    public function fetchSpendings()
+    {
+        $sql = "SELECT * FROM spendings";
+        $statement = $this->pdo->prepare($sql);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
