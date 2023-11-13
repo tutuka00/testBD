@@ -43,4 +43,14 @@ class SpendingCalculator
 
         return $spendings;
     }
+
+    public function sortSpendings()
+    {
+        $spendings = $this->fetchAllSpendings();
+        $amounts = array_column($spendings, 'amount');
+        array_multisort($amounts, SORT_ASC, $spendings);
+        $sortedAmounts = array_column($spendings, 'amount');
+    
+        return $sortedAmounts;
+    }
 }
