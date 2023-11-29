@@ -17,7 +17,7 @@ class IncomeCalculator
         $incomes = $this->fetchIncomes();
         $monthlyTotal = [];
 
-        // 月ごとに合計を計算
+        
         foreach ($incomes as $income) {
             $date = explode("-", $income["accrual_date"]);
             $month = abs($date[1]);
@@ -29,7 +29,7 @@ class IncomeCalculator
             $monthlyTotal[$month] += $income["amount"];
         }
 
-        // 月ごとの合計を高い順にソート
+        
         arsort($monthlyTotal);
 
         return $monthlyTotal;
